@@ -1,0 +1,47 @@
+﻿@model List<Category>
+
+@{
+    List<Category> ordered_categories = Model.OrderBy(category => category.DisplayOrder).ToList();
+}
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Category List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="text-end">
+                <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-dark"><i class="bi bi-plus-circle"></i> Create New Category</a>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th class="text-center">Category Name</th>
+                <th class="text-center">Display Order</th>
+                <th class="text-center">Edit</th>
+            </tr>
+            @foreach (Category category in ordered_categories)
+            {
+                <tr class="text-center">
+                    <td>
+                        @category.Name
+                    </td>
+                    <td>
+                        @category.DisplayOrder
+                    </td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="Category" asp-action="Edit" asp-route-Id="@category.Id" class="btn btn-outline-dark text-center"><i class="bi bi-pencil"></i> Edit</a>
+                            <a asp-controller="Category" asp-action="Delete" asp-route-Id="@category.Id" class="btn btn-outline-danger"><i class="bi bi-trash3-fill"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

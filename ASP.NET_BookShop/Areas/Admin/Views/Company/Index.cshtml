@@ -1,0 +1,38 @@
+﻿@model List<Company>
+
+@{
+    List<Company> ordered_companies = Model.OrderBy(company => company.Name).ToList();
+}
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Company List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="text-end">
+                <a asp-controller="Company" asp-action="UpdateOrInsert" class="btn btn-dark"><i class="bi bi-plus-circle"></i> Create New Company</a>
+            </div>
+        </div>
+        <table id="tableData" class="table table-bordered table-striped text-center" style="width:100%">
+            <thead>
+                <tr>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">City</th>
+                    <th class="text-center">State</th>
+                    <th class ="text-center">Phone Number</th>
+                    <th class="text-center">Edit</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/company.js"></script>
+}
