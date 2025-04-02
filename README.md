@@ -17,7 +17,6 @@ It was created as a practice project and will not receive updates
 - **Entity Framework Core**
 - **SQLite**
 - **Bootstrap (for UI styling)**
-- 
 ## Images
 ![Main Page](Assets/MainPage.png)
 ![Book](Assets/Book.png)
